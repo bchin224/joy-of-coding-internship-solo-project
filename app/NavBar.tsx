@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link'
-import React from 'react'
+import Link from 'next/link';
+import React from 'react';
 import { MdOutlineEventNote } from "react-icons/md";
 
-
 const NavBar = () => {
+
     const links = [
         { label: 'Today', href: '/today' },
         { label: 'This Week', href: '/week' }
