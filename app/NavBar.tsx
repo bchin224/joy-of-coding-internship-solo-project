@@ -7,8 +7,8 @@ import { MdOutlineEventNote } from "react-icons/md";
 const NavBar = () => {
 
     const links = [
-        { label: 'Today', href: '/today' },
-        { label: 'This Week', href: '/week' }
+        { label: "Home", href: "/" },
+        { label: "To Do's", href: "/to_dos" }
     ]
 
   return (
