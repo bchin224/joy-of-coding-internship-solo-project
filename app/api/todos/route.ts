@@ -6,7 +6,6 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validation = createToDoSchema.safeParse(body)
 
-    console.log('Testing Body:', body)
     console.log('Testing validation:', validation)
 
     if (!validation.success) {
