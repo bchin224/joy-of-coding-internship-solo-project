@@ -7,6 +7,7 @@ export async function POST(request: NextRequest) {
     const validation = createToDoSchema.safeParse(body)
 
     console.log('Testing validation:', validation)
+    console.log(body)
 
     if (!validation.success) {
         console.log('Fail:', validation)

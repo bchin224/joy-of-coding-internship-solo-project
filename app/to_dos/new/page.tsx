@@ -15,7 +15,7 @@ type ToDoForm = z.infer<typeof createToDoSchema>;
 
 const newToDoPage = () => {
     const router = useRouter();
-    const {register, control, handleSubmit, formState: { errors }} = useForm<ToDoForm>(
+    const {register, handleSubmit, formState: { errors }} = useForm<ToDoForm>(
         { resolver: zodResolver(createToDoSchema)}
     );
     const [error, setError] = useState('')
