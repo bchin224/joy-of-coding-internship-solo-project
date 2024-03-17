@@ -8,7 +8,8 @@ const NavBar = () => {
 
     const links = [
         { label: "Home", href: "/" },
-        { label: "To Do's", href: "/to_dos" }
+        { label: "Your To Do's", href: "/to_dos/list" },
+        { label: "New To Do", href: "/to_dos" }
     ]
 
   return (
