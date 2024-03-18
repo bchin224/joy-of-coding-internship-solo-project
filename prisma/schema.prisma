@@ -15,7 +15,7 @@ model ToDo {
   title       String   @db.VarChar(255)
   description String   @db.Text
   status      Status   @default(OPEN)
-  createdAt   DateTime @default(now())
+  dueDate     String
   updatedAt   DateTime @updatedAt
 }
 

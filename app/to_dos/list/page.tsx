@@ -20,6 +20,9 @@ const listToDos = async () => {
                         <Text as='div'>
                             {todo.description}
                         </Text>
+                        <Text as='div'>
+                            {todo.dueDate}
+                        </Text>
                     </a>
                 </Card>
 
