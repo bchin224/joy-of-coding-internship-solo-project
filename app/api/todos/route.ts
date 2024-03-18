@@ -21,29 +21,3 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(newTodo, { status: 201 });
 }
-
-// Read all To Do's
-export async function getAllRecords(): Promise<Record[]> {
-    try {
-      const records = await prisma.toDo.findMany();
-      return records;
-    } catch (error) {
-      throw new Error(`Error fetching records: ${error}`);
-    } finally {
-      await prisma.$disconnect();
-    }
-  }
-  
-  interface Record {
-    id: number;
-  }
-  
-  async function main() {
-    try {
-      const allRecords = await getAllRecords();
-      console.log(allRecords);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  main()
