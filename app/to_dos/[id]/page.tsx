@@ -1,9 +1,7 @@
 // import prisma from '@prisma/client';
 import { PrismaClient } from '@prisma/client';
-// import { notFound } from "next/navigation";
-
 import React from 'react'
-import { Heading, Text } from "@radix-ui/themes";
+import { Card, Heading, Text } from "@radix-ui/themes";
 
 interface Props {
     params: { id: string };
@@ -16,16 +14,12 @@ const ToDoPage = async ({ params }: Props) => {
         where: { id: parseInt(params.id)}
     })
 
-    console.log(todo)
-    // if (!todo) notFound();
-
     return (
-        <>
-        <div>
-            <Heading>{todo.title}</Heading>
-            <Text>{todo.description}</Text>
-        </div>
-        </>
+        <Card>
+            <Heading>{todo.id}: {todo.title}</Heading>
+            <Text>{todo.description}</Text><br/>
+            <Text>Due:{todo.dueDate}</Text>
+        </Card>
     )
 }
 
