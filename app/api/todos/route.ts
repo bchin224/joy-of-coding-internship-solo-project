@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     }
 
     const newTodo = await prisma.toDo.create({
-        data: { title: body.title, description: body.description }
+        data: { title: body.title, description: body.description, dueDate: body.dueDate }
     });
 
     return NextResponse.json(newTodo, { status: 201 });

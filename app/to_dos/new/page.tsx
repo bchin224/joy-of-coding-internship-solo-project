@@ -40,7 +40,7 @@ const newToDoPage = () => {
                 </TextField.Root>
                 <ErrorMessage>{errors.title?.message}</ErrorMessage>
                 <TextArea placeholder='Description' {...register('description')}></TextArea>
-                <ErrorMessage>{errors.dueDate?.message}</ErrorMessage>
+                <ErrorMessage>{errors.description?.message}</ErrorMessage>
                 <TextArea placeholder='dueDate' {...register('dueDate')}></TextArea>
                 <ErrorMessage>{errors.dueDate?.message}</ErrorMessage>
                 <Button>Add New To Do</Button>
