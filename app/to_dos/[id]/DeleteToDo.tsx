@@ -13,13 +13,12 @@ const DeleteToDo = ({id}: { id: number}) => {
   const deleteTodo = async () => {
     try {
       await axios.delete("/api/todos/" + id);
-      router.push("/todos/list");
+      router.push("/to_dos/list");
       router.refresh();
     } catch (error) {
       setError(true);
     }
   };
-
 
   return (
     <Button color='red'

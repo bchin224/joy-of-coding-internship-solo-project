@@ -13,7 +13,7 @@ const listToDos = async () => {
         <div>
             {todos.map((todo) => (
                 <Card key={todo.id} asChild>
-                    <a href={`/todos/${todo.id}`}>
+                    <a href={`/to_dos/${todo.id}`}>
                         <Text as='div'>
                             {todo.title} | {todo.status}
                         </Text>
