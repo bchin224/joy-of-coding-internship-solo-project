@@ -2,6 +2,7 @@
 import { PrismaClient } from '@prisma/client';
 import React from 'react'
 import { Card, Heading, Text } from "@radix-ui/themes";
+import EditToDo from './edit/EditToDo';
 import DeleteToDo from './DeleteToDo';
 
 interface Props {
@@ -18,8 +19,9 @@ const ToDoPage = async ({ params }: Props) => {
     return (
         <Card>
             <Heading>{todo.id}: {todo.title}</Heading>
-            <Text>{todo.description}</Text><br/>
-            <Text>Due:{todo.dueDate}</Text><br/>
+            <Text>Description: {todo.description}</Text><br/>
+            <Text>Due: {todo.dueDate}</Text><br/>
+            <EditToDo id={todo.id}/>
             <DeleteToDo id={todo.id}/>
         </Card>
     )
