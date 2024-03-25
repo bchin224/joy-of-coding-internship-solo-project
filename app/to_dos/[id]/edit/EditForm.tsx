@@ -39,14 +39,14 @@ const EditForm = ({ todo }: { todo?: ToDo }) => {
                 }
             })}>
                 <TextField.Root>
-                    <TextField.Input placeholder={todo?.title} {...register('title')}/>
+                    <TextField.Input defaultValue={todo?.title} {...register('title')}/>
                 </TextField.Root>
                 <ErrorMessage>{errors.title?.message}</ErrorMessage>
-                <TextArea placeholder={todo?.description} {...register('description')}></TextArea>
+                <TextArea defaultValue={todo?.description} {...register('description')}></TextArea>
                 <ErrorMessage>{errors.description?.message}</ErrorMessage>
-                <TextArea placeholder={todo?.dueDate} {...register('dueDate')}></TextArea>
+                <TextArea defaultValue={todo?.dueDate} {...register('dueDate')}></TextArea>
                 <ErrorMessage>{errors.dueDate?.message}</ErrorMessage>
-                <StatusSelect/><br/>
+                <StatusSelect status = {todo?.status}/>
                 <Button>Edit To Do</Button>
             </form>
         </div>

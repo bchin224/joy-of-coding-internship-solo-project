@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Card, Heading, Text } from "@radix-ui/themes";
+// import { Card, Heading, Text } from "@radix-ui/themes";
 import prisma from "@/prisma/client";
 import EditForm from './EditForm';
 
@@ -17,12 +17,12 @@ const editToDoPage = async ({ params }: Props) => {
     return (
         <>
         <div>editToDoPage</div>
-            <Card>
+            {/* <Card>
                 <Heading>{todo.id}: {todo.title}</Heading>
                 <Text>Description: {todo.description}</Text><br/>
                 <Text>Due: {todo.dueDate}</Text><br/>
                 <Text>Status: {todo.status}</Text><br/>
-            </Card>
+            </Card> */}
             <EditForm todo={todo}/>
 
         </>
