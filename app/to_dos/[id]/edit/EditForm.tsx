@@ -1,27 +1,30 @@
 'use client'
 
 import React from 'react'
-import { Text, TextField, TextArea, Button, Callout } from '@radix-ui/themes';
-import * as Label from '@radix-ui/react-label';
+import { TextField, TextArea, Button, Callout } from '@radix-ui/themes';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { createToDoSchema } from '@/app/validationSchema';
-import { z } from 'zod';
+import { editToDoSchema } from '@/app/validationSchema';
 import ErrorMessage from '@/app/components/ErrorMessage';
 import { ToDo } from "@prisma/client";
-import StatusSelect from './Selector';
 
-type ToDoForm = z.infer<typeof createToDoSchema>;
+interface EditForm {
+    title: string;
+    description: string;
+    dueDate: string;
+    status: string;
+}
 
 const EditForm = ({ todo }: { todo?: ToDo }) => {
     const router = useRouter();
-    const {register, handleSubmit, formState: { errors }} = useForm<ToDoForm>(
-        { resolver: zodResolver(createToDoSchema)}
+    const {register, handleSubmit, formState: { errors }} = useForm<EditForm>(
+        { resolver: zodResolver(editToDoSchema)}
     );
     const [error, setError] = useState('')
+    console.log('Todo.status: ',todo?.status)
 
     return (
         <div className='max-w-xl space-y-3'>
@@ -46,7 +49,18 @@ const EditForm = ({ todo }: { todo?: ToDo }) => {
                 <ErrorMessage>{errors.description?.message}</ErrorMessage>
                 <TextArea defaultValue={todo?.dueDate} {...register('dueDate')}></TextArea>
                 <ErrorMessage>{errors.dueDate?.message}</ErrorMessage>
-                <StatusSelect status = {todo?.status}/>
+
+                <select
+                    className="block w-full border-gray-300 rounded-md shadow-sm"
+                    defaultValue={todo?.status || ''} // Set defaultValue to the todo status 
+                    {...register('status')}
+                >
+                    <option value="">Select Status</option>
+                    <option value="OPEN">Open</option>
+                    <option value="IN_PROGRESS">In Progress</option>
+                    <option value="CLOSED">Closed</option>
+                </select>
+
                 <Button>Edit To Do</Button>
             </form>
         </div>
