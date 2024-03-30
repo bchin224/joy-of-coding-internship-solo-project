@@ -1,15 +1,39 @@
+
 import React from 'react'
 import prisma from "@/prisma/client";
 import { Text, Card } from "@radix-ui/themes";
+import StatusFilter from './statusFilter';
+import { useSearchParams } from 'next/navigation';
+import { Status } from '@prisma/client';
 
+interface Props {
+    searchParams: {
+        [key: string]: string;
+        status: string;
+    }
+}
 
-const listToDos = async () => {
-    const todos = await prisma.toDo.findMany();
+const listToDos = async ({ searchParams }: Props) => {
+   
+    let param = ''
+
+    if (Object.keys(searchParams).length == 0) {
+        console.log('No Params')
+
+    } else {
+        console.log('Param Exists')
+        param = searchParams.status;
+    }
+    // console.log('Search Params:',searchParams.status)
+
+    const todos = await prisma.toDo.findMany({
+        where: param ? { status: param as Status } : undefined
+    });
 
   return (
     <>
-        <div>You're To Do's!</div>
-        <br/>
+        <div>Your To Do's</div>
+        <StatusFilter/>
         <div>
             {todos.map((todo) => (
                 <Card key={todo.id} asChild>
